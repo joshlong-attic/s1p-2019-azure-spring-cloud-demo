@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.EventListener;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -59,7 +60,10 @@ class Initializer {
 @AllArgsConstructor
 @NoArgsConstructor
 class Reservation {
-	private String id, name;
+
+	@Id
+	private String id;
+	private String name;
 }
 
 interface ReservationRepository extends ReactiveMongoRepository<Reservation, String> {
